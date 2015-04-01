@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+         <meta charset="utf-8" />
+         <meta name="viewport" content="user-scalable=no" />
+        <link rel="stylesheet" type="text/css" href="css/style_propos.css" />
+        <script src="js/jquery-1.10.2.min.js"></script>
+        <script src="js/jquery-ui.min.js"></script>
+        <script type="text/javascript">
+                                        /**
+                * On traite d'abord le chargement du DOM
+                **/
+                  $(document).ready(function(){
+                $("#conteneur").hide(); //on cache le contenu
+                $("body").append('<div id="wait"><img id="waiter" src="ressources/transition.jpg" alt="chargement..."/></div>');
+                $("body").append('<div id="wait_barre"><img id="waiter_barre" src="ressources/chargement_transition.png" alt="chargement..."/></div>');
+                var img_wait=document.getElementById("waiter");
+                img_wait.style.cssText="width:"+x+"px;height:"+y+"px;top:-10px;left:-10px;";
+                var img_waiter_barre=document.getElementById("waiter_barre");
+                img_waiter_barre.style.cssText="width:"+(Math.round(x/4))+"px;height:"+(Math.round(y/3))+"px;top:"+(7.3*(Math.round(y/10)))+"px;left:"+(3.5*(Math.round(x/10)))+"px;";
+            });
+                $(window).load(function(){
+                 setTimeout(function () {
+                        $("#wait").hide();     
+                        $("#wait_barre").hide();           
+                        $("#conteneur").fadeIn(1000);
+                    }, 1000);    
+                });
+            </script>
+        <title>A propos</title>
+    </head>
+    <body>
+        <div id="conteneur">
+            <img id="contenu" src="ressources/image_fond_tournant.png">
+            <div id="cadre">
+                <p id="cadre_text"><strong>Cette application a &eacute;t&eacute; cr&eacute;&eacute;e dans le but de trouver al&eacute;atoirement un conducteur qui ne boira pas durant la soir&eacute;e.</br>
+                </br>
+                Tous les droits d'images sont autoris&eacute;s par un partenariat avec la s&eacute;curit&eacute; routi&egrave;re:</br>
+                <a style="text-decoration:none;color:purple;" href="http://www.securite-routiere.gouv.fr/">Lien du site officiel</a>
+                </br>
+                </br>
+                L'application a &eacute;t&eacute; cr&eacute;&eacute;e par deux &eacute;tudiants de l'UTBM et est uniquement remun&eacute;r&eacute;e par les publicit&eacute;es et dons.
+                </br>
+                </br>
+                La totalit&eacute; des dons revient aux cr&eacute;ateurs de l'application dans le but de cr&eacute;er d'autres applications utiles au quotidien.
+                </br>
+                </br>
+                Une page facebook a &eacute;galement &eacute;t&eacute; cr&eacute;&eacute;e, vous pouvez mettre j'aime en appuyant sur le bouton en bas de page ou bien partager en fin d'application. 
+                </br>
+                Merci de nous soutenir au mieux si notre application vous plait.
+                </br>
+                </br>
+                Toutes vos remarques afin d'am&eacute;liorer notre application sous les bienvenues si elles s'av&egrave;rent constructives.
+                </br>
+                </br>
+                </br>
+                                                     <center>Tous droits r&eacute;serv&eacute;s &agrave; L2MB©</center></br>
+                </strong>
+                </p>
+            </div>
+                <form  action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                    <input id="paypal1" class="paypal" type="hidden" name="cmd" value="_s-xclick">
+                    <input id="paypal2" class="paypal" type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----"
+                    >
+                    <input id="paypal3" class="paypal" type="image" src="ressources/paypal.gif" border="0" name="submit" alt="PayPal - la solution de paiement en ligne la plus simple et la plus sécurisée !">
+                    <img id="paypal4" class="paypal" alt="" border="0" src="ressources/pixel.gif" width="1" height="1">
+                </form>
+                <div id="back">
+                    <img id="back_arrow" src="ressources/back_arrow.png">
+                </div>
+                 <div id="fb_jaime">
+                    <img id="img_fb_jaime" src="ressources/facebook_jaime.png">
+                </div>
+        </div>
+        <script type="text/javascript" src="js/propos.js"></script>
+    </body>
+</html>
