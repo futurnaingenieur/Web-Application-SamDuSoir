@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+         <meta charset="utf-8" />
+         <meta name="viewport" content="user-scalable=no" />
+        <link rel="stylesheet" type="text/css" href="css/style_final.css" />
+        <script src="js/jquery-1.10.2.min.js"></script>
+        <script src="js/jquery-ui.min.js"></script>
+        <script src="js/SocialSharing.js"></script>
+        <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+        <script type="text/javascript" src="owl-carousel/owl.carousel.js"></script>  
+        <script type="text/javascript">
+                                        /**
+                * On traite d'abord le chargement du DOM
+                **/
+                 $(document).ready(function(){
+                $("#conteneur").hide(); //on cache le contenu
+                $("body").append('<div id="wait"><img id="waiter" src="ressources/transition.jpg" alt="chargement..."/></div>');
+                $("body").append('<div id="wait_barre"><img id="waiter_barre" src="ressources/chargement_transition.png" alt="chargement..."/></div>');
+                var img_wait=document.getElementById("waiter");
+                img_wait.style.cssText="width:"+x+"px;height:"+y+"px;top:-10px;left:-10px;";
+                var img_waiter_barre=document.getElementById("waiter_barre");
+                img_waiter_barre.style.cssText="width:"+(Math.round(x/4))+"px;height:"+(Math.round(y/3))+"px;top:"+(7.3*(Math.round(y/10)))+"px;left:"+(3.5*(Math.round(x/10)))+"px;";
+            });
+                $(window).load(function(){
+                 setTimeout(function () {
+                        $("#wait").hide();     
+                        $("#wait_barre").hide();           
+                        $("#conteneur").fadeIn(1000);
+                    }, 1000);    
+                });
+            </script>
+
+          
+           
+
+            <!-- Owl Carousel Assets -->
+            <link href="owl-carousel/owl.carousel.css" rel="stylesheet">
+            <link href="owl-carousel/owl.theme.css" rel="stylesheet">
+
+             <style>
+            @font-face {
+                font-family: blackcoffee;
+                src: url("font/blackcoffee.ttf");
+                }
+        </style>
+  </head>
+
+
+        <title>A propos</title>
+    </head>
+    <body >
+
+ <div id="conteneur">
+            <img id="contenu" src="ressources/image_fond_tournant.png">
+            <div id="cadre">
+                    <div id="owl-demo" class="owl-carousel"> 
+                        <div class="item" ><img id="win_1"src=""></div>
+                        <div class="item" ><img id="win_2"src=""></div>
+                        <div class="item" ><img id="win_3"src=""></div>
+                        <div class="item" ><img id="win_4"src=""></div>
+                        <div class="item" ><img id="win_5"src=""></div>
+                        <div class="item" ><img id="win_6"src=""></div>
+                        <div class="item" ><img id="win_7"src=""></div>
+                        <div class="item" ><img id="win_8"src=""></div>
+                  </div>
+            </div>
+                  <div id="accueil"><p id="accueil_text">Accueil</p></div>
+                  <div id="fb"><img id="img_fb" src="ressources/facebook-partage.png"></img></div>
+
+        </div>
+       
+           
+
+         <style>
+
+
+    #owl-demo .item{
+        background: yellow;
+        width:66.6%;
+        height:100%;
+        color: #FFF;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+        z-index: 6;
+        
+    }
+    #owl-demo .item img{
+        width:100%;
+        height: 85%;
+        border-radius: 5%;
+        border: solid 3px purple;
+      }
+    .customNavigation a{
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    }
+    </style>
+<script type="text/javascript" src="js/final.js"></script>  
+
+    <script type="text/JavaScript">
+    document.write("<style type='text/css'>");
+    document.write("#owl-demo .item{padding-top:25px;padding-left:"+Math.round(((5*x/6)-(5*x/9))/2)+"px;}");
+    document.write("</style>");
+    for(t=0;t<winner;t++){
+       /*var content = "<div class=\"item\"><img id=\"win_"+(t+1)+"\"src=\"\"></div>";
+        owl.data('owlCarousel').addItem(content);*/
+        img[t] = document.getElementById("win_"+(t+1));
+        img[t].style.cssText = "display:none;";
+
+    }
+
+    for(p=1;p<=winner;p++){
+        img[p-1].style.cssText = "display:block;";
+        img[p-1].src =  img_winner[p-1];
+    }
+
+    $(document).ready(function() {
+
+      var owl = $("#owl-demo");
+
+        owl.owlCarousel({
+      responsive : false,
+      items : 1, //10 items above 1000px browser width
+      itemsDesktop : [1000,1], //5 items between 1000px and 901px
+      itemsDesktopSmall : [900,1], // 3 items betweem 900px and 601px
+      itemsTablet: [600,1], //2 items between 600 and 0;
+      itemsMobile : false, // itemsMobile disabled - inherit from itemsTablet option
+      });
+        for(i=0;i<(8-winner);i++){
+      owl.data('owlCarousel').removeItem();
+    }
+        owl.trigger('owl.play',3000);
+
+    });
+    </script>
+    
+        
+
+    </body>
+</html>
