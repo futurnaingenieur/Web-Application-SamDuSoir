@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+         <meta charset="utf-8" />
+         <meta name="viewport" content="user-scalable=no" />
+        <link rel="stylesheet" type="text/css" href="css/style_resultat.css" />
+        <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+         <script src="js/jquery-1.10.2.min.js"></script>
+        <script src="js/jquery-ui.min.js"></script>
+          <script type="text/javascript" charset="utf-8">
+
+           $(window).load(function(){
+           setTimeout(function () {
+                        container.style.cssText = "width:"+Math.round(4*x/6)+"px;height:"+Math.round(2*y/3)+"px;top:"+Math.round(y/6)+"px;left:"+Math.round(x/15)+"px;visibility:visible;";
+                        fond.style.cssText="width:"+diago+"px;left:-"+f_left_pos+"px;top:-"+f_top_pos+"px;visibility:visible;";
+                        cadre.style.cssText="width:"+Math.round(5*(x/6))+"px;height:"+Math.round(y-(x/6))+"px;left:"+(Math.round(x/12)-10)+"px;top:"+(Math.round(x/12)-10)+"px;visibility:visible;";
+                        carou.style.cssText="visibility:visible;";       
+                    }, 2000);    
+         });
+
+          </script>       
+    <style media="screen">
+
+    #container {
+      visibility: hidden;
+      position: absolute;
+      border: 5px solid purple;
+      border-radius: 15px;
+      overflow: hidden;
+      -webkit-perspective: 1100px;
+         -moz-perspective: 1100px;
+           -o-perspective: 1100px;
+              perspective: 1100px;
+    }
+
+
+    #carousel {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top:0px;
+      -webkit-transform-style: preserve-3d;
+         -moz-transform-style: preserve-3d;
+           -o-transform-style: preserve-3d;
+              transform-style: preserve-3d;
+    }
+
+    .ready #carousel {
+      -webkit-transition: -webkit-transform 3s;
+
+    }
+
+    #carousel.panels-backface-invisible figure {
+      -webkit-backface-visibility: hidden;
+         -moz-backface-visibility: hidden;
+           -o-backface-visibility: hidden;
+              backface-visibility: hidden;
+    }
+
+    #carousel figure {
+      display: block;
+      position: absolute;
+      border-radius: 15px;
+      width: 100%;
+      height: 100%;
+      left: 0%;
+      top: 0%;
+    }
+
+    button{
+      display:none;
+    }
+
+    #commencer{
+      position:absolute;
+      z-index: 9;
+      border-radius: 15px;
+      border:2px solid black;
+      text-align: center;
+    }
+
+    #com_text{
+      color:white;
+      font-family: blackcoffee;
+       display: inline;
+    }
+
+    .ready #carousel figure {
+      -webkit-transition: opacity 1s, -webkit-transform 0.2s;  
+    }
+
+  </style>
+        <title>Resultat</title>
+        <style>
+            @font-face {
+                font-family: blackcoffee;
+                src: url("font/blackcoffee.ttf");
+                }
+        </style>
+    </head>
+    <body id="entier">
+        <div id="conteneur">
+             <img id="contenu" src="ressources/image_fond_tournant.png">
+            <div id="cadre">
+
+                      <div id="banniere">
+                        <p id="banniere_text">Selection du Sam</p>
+                        <img id="sam1" src="ressources/Samtest.png"></img>
+                        <img id="sam2" src="ressources/Samtest.png"></img>
+                        <section id="container" >
+                        <div id="carousel">
+                                <figure><img id="carou_1" src=""></figure>
+                                <figure><img id="carou_2" src=""></figure>
+                                <figure><img id="carou_3" src=""></figure>
+                                <figure><img id="carou_4" src=""></figure>
+                                <figure><img id="carou_5" src=""></figure>
+                                <figure><img id="carou_6" src=""></figure>
+                                <figure><img id="carou_7" src=""></figure>
+                                <figure><img id="carou_8" src=""></figure>
+                                <figure><img id="carou_9" src=""></figure>
+                                <figure><img id="carou_10" src=""></figure>
+                                <figure><img id="carou_11" src=""></figure>
+                                <figure><img id="carou_12" src=""></figure>
+                                <figure><img id="carou_13" src=""></figure>
+                                <figure><img id="carou_14" src=""></figure>
+                                <figure><img id="carou_15" src=""></figure>
+                                <figure><img id="carou_16" src=""></figure>
+                                <figure><img id="carou_17" src=""></figure>
+                                <figure><img id="carou_18" src=""></figure>
+                                <figure><img id="carou_19" src=""></figure>
+                                <figure><img id="carou_20" src=""></figure>
+                            </div>
+                            
+                          </section>
+<div id="commencer"><p id="com_text">Commencer</p></div>
+                          <section id="options">
+                          
+
+                            <p id="navigation">
+                              <button id="previous" data-increment="-1" >Previous</button>
+                              <button id="next" data-increment="1">Commencer</button>
+                            </p>
+
+
+                            <p>
+                              <button id="toggle-backface-visibility">Toggle Backface Visibility</button>
+                            </p>
+
+                          </section>
+                      </div>
+                      </div>
+        </div>
+   <script src="js/utils.js"></script>
+  <script>
+
+
+    var transformProp = Modernizr.prefixed('transform');
+    var current=1;
+    var tirage=0;
+    function Carousel3D ( el ) {
+      this.element = el;
+      this.rotation = 0;
+      this.panelCount = participant;
+      this.totalPanelCount = this.element.children.length;
+      this.theta = 0;
+      this.isHorizontal = false;
+      this.element.toggleClassName('panels-backface-invisible');
+    }
+
+    Carousel3D.prototype.modify = function() {
+
+      var panel, angle, i;
+      this.panelCount = participant;
+      this.panelSize = this.element[ this.isHorizontal ? 'offsetWidth' : 'offsetHeight' ];
+      this.rotateFn = this.isHorizontal ? 'rotateY' : 'rotateX';
+      this.theta = 360 / this.panelCount;
+
+      // do some trig to figure out how big the carousel
+      // is in 3D space
+      this.radius = Math.round( ( this.panelSize / 2) / Math.tan( Math.PI / this.panelCount ) );
+      for ( i = 0; i < this.panelCount; i++ ) {
+        panel = this.element.children[i];
+        angle = this.theta * i;
+           panel.style.opacity = 1;
+            panel.style.backgroundColor = 'hsla(' + angle + ', 100%, 50%, 1)';
+            // rotate panel, then push it out in 3D space
+            panel.style[ transformProp ] = this.rotateFn + '(' + angle + 'deg) translateZ(' + this.radius + 'px)';
+       
+      }
+
+      // hide other panels
+      for (  ; i < this.totalPanelCount; i++ ) {
+        panel = this.element.children[i];
+        panel.style.opacity = 0;
+        panel.style[ transformProp ] = 'none';
+      }
+
+      // adjust rotation so panels are always flat
+      this.rotation = Math.ceil( this.rotation / this.theta ) * this.theta;
+
+      this.transform();
+
+    };
+
+    Carousel3D.prototype.transform = function() {
+      // push the carousel back in 3D space,
+      // and rotate it
+      this.element.style[ transformProp ] = 'translateZ(-' + this.radius + 'px) ' + this.rotateFn + '(' + this.rotation + 'deg)';
+    };
+
+
+
+    var init = function() {
+
+
+      var carousel = new Carousel3D( document.getElementById('carousel') ),
+          navButtons = document.querySelectorAll('#navigation button'),
+          com = document.getElementById("commencer");
+          com.style.cssText = "background-color:purple;height:"+Math.round(y/15)+"px;width:"+Math.round(x/3)+"px;top:"+Math.round(3*y/4)+"px;left:"+Math.round(5*(x/12)-(x/6))+"px;";
+          com_text = document.getElementById("com_text");
+          com_text.style.cssText =  "font-size:"+Math.round(x*0.07)+"px;height:"+ Math.round(y/15) +"px;line-height:"+Math.round(y/15)+"px;";
+           tirage = function(entier,max,event){
+        var increment = parseInt( event.target.getAttribute('data-increment') );
+            var rand = Math.floor((Math.random() * 2*participant)+participant);
+            carousel.rotation += carousel.theta * rand *-1;
+            for(j=0;j<rand;j++){
+              if(current<participant){
+                current++;
+              }
+              else{
+                current=1;
+              }
+            }
+            
+            setTimeout(function () {
+          
+             },3500);
+            carousel.transform();
+            var img_curr = document.getElementById("carou_"+current);
+            winner_url.push(img_curr.src);
+            index = img_tab.indexOf(img_curr.src);
+              setTimeout(function () {
+                       
+                       img_tab.splice(index,1);
+                       for(i=1;i<=participant;i++){
+                            img[i-1] = document.getElementById("carou_"+i+"");
+                            img[i-1].src = img_tab[i-1]; 
+                        }
+                        
+                        if(current==participant){
+                          participant--; 
+                          current=participant;
+                        }
+                        else{
+                           participant--; 
+                           if(current==1){
+                            
+                           }
+                           else{
+                            current--;
+                           } 
+                        }
+                       carousel.modify();
+              }, 3900); 
+
+          if(entier<max){
+            setTimeout(function(){
+            return tirage((entier+1),max,event);
+            }, 4300); 
+          }
+          else{
+             setTimeout(function () {
+              var chaine="";
+                      for(k=0;k<nbSam-1;k++){
+                        chaine+="nbr="+winner_url[k]+"&";
+                      }
+                        chaine+="nbr="+winner_url[k];
+                         window.location = "final.html?winner="+nbSam+"&"+chaine;
+                        
+              }, 0); 
+          }   
+          document.getElementById("commencer").style.cssText = "display:none;";
+    }
+
+          onNavButtonClick = function( event ){
+            tirage(0,nbSam,event);
+          };
+
+
+      // populate on startup
+      carousel.panelCount = participant;
+      carousel.modify();
+
+      for (var i=0; i < 2; i++) {
+        navButtons[i].addEventListener( 'click', onNavButtonClick, false);
+      }
+        com.addEventListener( 'touchstart', onNavButtonClick, false);
+      document.getElementById('toggle-backface-visibility').addEventListener( 'click', function(){
+        carousel.element.toggleClassName('panels-backface-invisible');
+      }, false);
+
+      setTimeout( function(){
+        document.body.addClassName('ready');
+      }, 0);
+
+    };
+
+    window.addEventListener( 'DOMContentLoaded', init, false);
+
+    
+  </script>
+
+
+  <p id="disclaimer">Sorry, your browser does not support CSS 3D transforms. This example may be broken.</p>
+
+            
+  <script type="text/JavaScript">
+    </script>
+    <script src="js/jquery-1.10.2.min.js"></script>
+    <script src="js/idangerous.swiper.min.js"></script>
+    <script type="text/javascript" src="js/resultat.js"></script>    
+    </body>
+</html>
