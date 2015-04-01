@@ -1,0 +1,98 @@
+<style type="text/css">
+
+/*----------------------------------------------------------*\
+|                  CSS  de la page A propos                  |
+|                                                            |
+\*----------------------------------------------------------*/
+
+
+@media (orientation: landscape){
+	body{
+		-webkit-transform: rotate(-90deg);
+    	position:fixed;
+    	@include transform-origin:0% 0%;	
+    	top:100%;
+	}
+}
+
+
+#conteneur{
+	position:fixed;
+}
+
+#wait{
+	position:absolute;
+	z-index:1;
+}
+
+#waiter{
+	position: absolute;
+	z-index:1;
+}
+
+#wait_barre{
+	position:absolute;
+	z-index:2;
+}
+
+#waiter_barre{
+	position : absolute;
+	z-index:2;
+	-webkit-animation:spin 1s linear infinite;
+}
+
+img#contenu{
+	position:absolute;
+	z-index: 1;
+	border:1px solid black;
+	-webkit-animation:spin 50s linear infinite;
+}
+
+
+#cadre{
+	border: 3px solid black;
+	position:fixed;
+	z-index:3;
+	background-color: yellow;
+	overflow: hidden;
+}
+
+#accueil{
+	background-color:purple;
+	border:3px solid black;
+	position: absolute;
+	text-align: center;
+	border-radius: 1em 1em 1em 1em;
+	z-index:7;
+}
+
+#accueil_text{
+	color:white;
+	display: inline;
+	text-align: center;
+	font-family: blackcoffee;
+	z-index: 15;
+}
+#fb{
+	background-color:purple;
+	border:3px solid black;
+	position: absolute;
+	border-radius: 1em 1em 1em 1em;
+	z-index:8;
+	overflow: hidden;
+}
+
+#img_fb{
+	position: relative;
+	border-radius: 1em 1em 1em 1em;
+	width: 100%;
+	height: 100%;
+}
+
+
+@-webkit-keyframes spin { 
+	100% { 
+		-webkit-transform: rotate(360deg); 
+		} 
+}
+</style>
