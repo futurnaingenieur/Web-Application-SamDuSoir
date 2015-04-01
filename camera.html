@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+         <meta charset="utf-8" />
+         <link rel="stylesheet" type="text/css" href="css/style_camera.css" />
+         <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+         <script type="text/javascript" charset="utf-8">
+
+    var pictureSource;   // picture source
+    var destinationType; // sets the format of returned value
+    var x = (window.innerWidth)+1;
+    var y = (window.innerHeight)+1;
+    var p = 0;
+	/*  We build an array which will contain object composed by an url corresponding 
+      to the path of the picture.
+*/
+	var img_tab = new Array();
+		function img (url) {
+   			this.url = url;
+		}
+
+    // Wait for device API libraries to load
+    //
+    document.addEventListener("deviceready",onDeviceReady,false);
+
+    // device APIs are available
+    //
+    function onDeviceReady() {
+        pictureSource=navigator.camera.PictureSourceType;
+        destinationType=navigator.camera.DestinationType;
+        alert("Participant 1, c'est à vous!");
+        capturePhoto();
+        retry.style.cssText = "width:"+Math.round(x/6)+"px;height:"+Math.round(x/6)+"px;top:"+Math.round(y-(x/4))+"px;left:"+Math.round(x/12)+"px;visibility:visible;";
+        download.style.cssText = "width:"+Math.round(x/6)+"px;height:"+Math.round(x/6)+"px;top:"+Math.round(y-(x/4))+"px;left:"+Math.round(5*x/12)+"px;visibility:visible;";
+        next.style.cssText = "width:"+Math.round(x/6)+"px;height:"+Math.round(x/6)+"px;top:"+Math.round(y-(x/4))+"px;left:"+Math.round(9*x/12)+"px;visibility:visible;";
+        retry_text.style.cssText = "font-size:"+Math.round(x*0.17)+"px;height:"+ Math.round(x/6) +"px;width:"+Math.round(x/6)+"px;line-height:"+Math.round(x/6)+"px;";
+        download_text.style.cssText = "font-size:"+Math.round(x*0.17)+"px;height:"+ Math.round(x/6) +"px;width:"+Math.round(x/6)+"px;line-height:"+Math.round(x/6)+"px;";
+        next_text.style.cssText = "font-size:"+Math.round(x*0.17)+"px;height:"+ Math.round(x/6) +"px;width:"+Math.round(x/6)+"px;line-height:"+Math.round(x/6)+"px;";
+        affichage.style.cssText = "width:"+Math.round(x)+"px;height:"+Math.round(y/6)+"px;visibility:visible;"; 
+    }
+    // Called when a photo is successfully retrieved
+    //
+    function onPhotoURISuccess(imageURI) {
+      // Uncomment to view the image file URI
+      // console.log(imageURI);
+
+      // Get image handle
+      //
+      var image = document.getElementById("photo");
+
+      // Unhide image elements
+      //
+      image.style.display = 'block';
+
+      // Show the captured photo
+      // The in-line CSS rules are used to resize the image
+      //
+      image.src = imageURI;
+      img_tab[p]=new img(imageURI);
+      p++;
+
+       if(sessionStorage.isprofileimage==1){
+            getLocation();
+        }
+    }
+    // A button will call this function
+    //
+    function capturePhoto() {
+      sessionStorage.removeItem('imagepath');
+      // Take picture using device camera and retrieve image as URI string
+        navigator.camera.getPicture(onPhotoURISuccess, onFail, 
+            { 
+              quality: 60,
+              correctOrientation: true
+            }
+        );
+    }
+
+    // Called if something bad happens.
+    //
+    function onFail(message) {
+      alert("Problème de camera, veuillez reprendre la photo.");
+      capturePhoto();
+    }
+      </script>
+
+		 <title>Camera</title>
+     <style>
+            @font-face {
+                font-family: blackcoffee;
+                src: url("font/blackcoffee.ttf");
+              }
+        </style>
+	</head>
+
+	<body>  
+	<div id="conteneur">
+			<img id="photo" src="ressources/transition.jpg"></img>
+  <div id="affichage">
+    <p id="affichage_text"></p>
+  </div>
+	<div id="retry">
+		<p id="retry_text"><strong>&#8635</strong></p>
+	</div>
+	<div id="download">
+		<p id="download_text"><strong>&#8645</strong></p>
+	</div>
+	<div id="next">
+		<p id="next_text"><strong>&#10149</strong></p>
+	</div>
+	</div>  
+	 <script type="text/javascript" src="js/camera.js"></script>  
+    </body>
+</html>
