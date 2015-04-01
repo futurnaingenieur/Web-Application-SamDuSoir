@@ -1,0 +1,211 @@
+<style type="text/css">
+
+/*----------------------------------------------------------*\
+|                  CSS  de la pge d'acceuil                  |
+|                                                            |
+\*----------------------------------------------------------*/
+
+
+@media (orientation: landscape){
+	body{
+		-webkit-transform: rotate(-90deg);
+    	position:absolute;
+    	@include transform-origin:0% 0%;	
+    	top:100%;
+	}
+}
+
+
+
+#sam_wait{
+	position:absolute;
+}
+
+#conteneur{
+	position:fixed;
+}
+
+
+img#waiter{
+	position:absolute;
+	z-index:3;
+	-webkit-animation:descente 2s linear;
+	-webkit-animation-fill-mode: forwards;
+}
+
+#ligne1{
+	position:absolute;
+	z-index:4;
+	background-color:purple;
+	border: solid black 3px;
+	border-bottom:none;
+  	-webkit-animation: ligne_descente 0.8s linear;
+  	-webkit-animation-fill-mode: forwards;
+}
+
+#ligne2{
+	position:absolute;
+	z-index:3;
+	background-color:purple;
+	border: solid black 3px;
+  	-webkit-animation: ligne_droite 0.8s;
+  	-webkit-animation-fill-mode: forwards;
+}
+
+#lettre1{
+	position:absolute;
+	text-align: center;
+	z-index:3;
+  	-webkit-animation: lettre 1.2s;
+  	-webkit-animation-timing-function: steps(1, end);
+  	-webkit-animation-fill-mode: forwards;
+}
+
+#lettre2{
+	position:absolute;
+	text-align: center;
+	z-index:3;
+  	-webkit-animation: lettre 1.6s;
+  	-webkit-animation-timing-function: steps(1, end);
+  	-webkit-animation-fill-mode: forwards;
+}
+
+#lettre3{
+	position:absolute;
+	text-align: center;
+	z-index:3;
+  	-webkit-animation: lettre 2s linear;
+  	-webkit-animation-timing-function: steps(1, end);
+  	-webkit-animation-fill-mode: forwards;
+}
+
+#lettre1_text{
+	display: inline;
+	color : purple;
+	text-align: center;
+	z-index: 3;	
+	-webkit-text-stroke-width: 2px;
+	-webkit-text-stroke-color: #000000;
+}
+
+#lettre2_text{
+	display: inline;
+	color : purple;
+	text-align: center;
+	z-index: 3;	
+	-webkit-text-stroke-width: 2px;
+	-webkit-text-stroke-color: #000000;
+}
+
+#lettre3_text{
+	display: inline;
+	color : purple;
+	text-align: center;
+	z-index: 3;	
+	-webkit-text-stroke-width: 2px;
+	-webkit-text-stroke-color: #000000;
+}
+
+
+img#contenu{
+	position:absolute;
+	z-index: 1;
+	-webkit-animation:spin 50s linear infinite;
+}
+
+img#sam{
+	position:absolute;
+	z-index:2;
+}
+
+
+#samDuSoir{
+	position:absolute;
+	text-align:center;
+	z-index:3;
+}
+
+#samDuSoir_text{
+	display: inline;
+	color : purple;
+	text-align: center;
+	font-family: blackcoffee;
+	-webkit-text-stroke-width: 1px;
+	-webkit-text-stroke-color: #2E0854;
+	z-index: 15;
+}
+
+#debut{
+	position: absolute;
+	text-align: center;
+	background-color: purple;
+	border-radius: 1em 0em 1em 0em;
+	border: 5px solid black;
+	z-index:4;
+}
+
+
+#debut_text{
+	display: inline;
+	color : white;
+	text-align: center;
+	font-family: blackcoffee;
+	z-index: 15;
+}
+
+#propos{
+	position: absolute;
+	text-align: center;
+	background-color: purple;
+	border-radius: 100%;
+	border: 3px solid black;
+	z-index:5;
+}
+
+#propos_text{
+	display: inline;
+	color : white;
+	text-align: center;
+	font-family:Impact;
+	z-index: 17;
+}
+
+
+
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@-webkit-keyframes descente {
+	40% { -webkit-transform: translateY(102%);}
+	50% { -webkit-transform: translateY(93%);}
+	60% { -webkit-transform: translateY(102%);}
+	70% { -webkit-transform: translateY(95%);}
+	80% { -webkit-transform: translateY(102%);}
+	90% { -webkit-transform: translateY(99%);}
+	100% { -webkit-transform: translateY(102%);}
+}
+@-webkit-keyframes ligne_descente {
+	0%{
+		height: 0%;
+	}
+	100%{
+		height: 20.1%;
+	}
+}
+
+@-webkit-keyframes ligne_droite {
+	0%{
+		width: 0%;
+	}
+	100%{
+		width: 80%;
+	}
+}
+
+@-webkit-keyframes lettre {
+	0%{
+		opacity:0;
+	}
+	100%{
+		opacity:1;
+	}
+}
+</style>
