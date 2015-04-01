@@ -1,0 +1,95 @@
+<style type="text/css">
+
+/*----------------------------------------------------------*\
+|                  CSS  de la page A propos                  |
+|                                                            |
+\*----------------------------------------------------------*/
+
+@media (orientation: landscape){
+	body{
+		-webkit-transform: rotate(-90deg);
+    	position:absolute;
+    	@include transform-origin:0% 0%;	
+    	top:100%;
+	}
+}
+#conteneur{
+	position:fixed;
+}
+
+
+#wait{
+	position:absolute;
+	z-index:1;
+}
+
+#waiter{
+	position: absolute;
+	z-index:1;
+}
+
+#wait_barre{
+	position:absolute;
+	z-index:2;
+}
+
+#waiter_barre{
+	position : absolute;
+	z-index:2;
+	-webkit-animation:spin 1s linear infinite;
+}
+
+img#contenu{
+	position:absolute;
+	z-index: 1;
+	-webkit-animation:spin 50s linear infinite;
+}
+
+.paypal{
+	position:absolute;
+	z-index: 2;
+}
+
+#cadre{
+	border: 3px solid black;
+	position:absolute;
+	z-index:3;
+	background-color: yellow;
+	overflow: scroll;
+}
+
+#cadre::-webkit-scrollbar { 
+    display: none; 
+}
+
+#cadre_text{
+	font-family: Verdana;
+}
+
+#back{
+	position: absolute;
+	border-radius: 100%;
+	border: 3px solid black;
+	background-color: purple;
+	z-index:4;
+}
+
+
+#fb_jaime{
+	position: absolute;
+	z-index:5;
+}
+
+#img_fb_jaime{
+	position: absolute;
+	height : 100%;
+	width : 100%;
+}
+
+
+@-webkit-keyframes spin { 
+	100% { 
+		-webkit-transform: rotate(360deg); 
+		} 
+}
+</style>
