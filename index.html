@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="css/style_accueil.css" />
+        <script src="js/jquery-1.10.2.min.js"></script>
+        <script src="js/jquery-ui.min.js"></script>
+        <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+        <script type="text/javascript">
+            setTimeout(function () {  
+                
+                    var ad_units = {
+                  ios : {
+                    banner: 'ca-app-pub-6539721732683969/2638964931', // votre référence fournie par AdMob pour cette application
+                    interstitial: 'ca-app-pub-6539721732683969/5592431339' // votre référence fournie par AdMob pour cette application
+                  },
+                  android : {
+                    banner: 'ca-app-pub-6539721732683969/2638964931', // votre référence fournie par AdMob pour cette application
+                    interstitial: 'ca-app-pub-6539721732683969/5592431339' // votre référence fournie par AdMob pour cette application
+                  }
+                                };
+                    // le code s'adapte en fonction de la platforme
+                    var admobid = ( /(android)/i.test(navigator.userAgent) ) ? ad_units.android : ad_units.ios;
+
+            if(AdMob) { // on vérifie que c'est un mobile et que AdMob est bien chargé
+                    AdMob.createBanner( { // 4 fois sur 5 la bannière
+                      adId:admobid.banner,
+                      position:AdMob.AD_POSITION.TOP_CENTER,
+                      autoShow:true,
+                      overlap:true}
+                    );
+                  } 
+            else{alert("NON marche pas admob");}          
+                    }, 2500);   
+
+         /**
+                * On traite d'abord le chargement du DOM
+                **/
+                  $(document).ready(function(){
+                $("#conteneur").hide(); //on cache le contenu
+                $("body").append('<div id="wait"><img id="waiter" src="ressources/perruque_sam.png" alt="chargement..."/></div>');
+                $("body").append('<div id="sam_wait"><img id="sam_waiter" src="ressources/Sam.png" alt"sam qui attend"/></div>');
+                $("body").append('<div id="fond_wait"></div>');
+                $("body").append('<div id="ligne1"></div>');
+                $("body").append('<div id="ligne2"></div>');
+                $("body").append('<div id="lettre1"><p id="lettre1_text">2</p></div>');
+                $("body").append('<div id="lettre2"><p id="lettre2_text">M</p></div>');
+                $("body").append('<div id="lettre3"><p id="lettre3_text">B</p></div>');
+                var s_left_pos = 0-Math.round(x/50);
+                var s_top_pos = 0-Math.round(y/16);
+                var fond_wait=document.getElementById("fond_wait");
+                fond_wait.style.cssText = "width:"+x+"px;height:"+y+"px;left:"+0+"px;top:"+0+"px;position:fixed;z-index:1;background-color:yellow";
+                var img_wait=document.getElementById("waiter");
+                img_wait.style.cssText="width:"+x+"px;height:"+y+"px;left:"+0+"px;top:-"+(y-s_top_pos)+"px;";
+                var img_sam_wait = document.getElementById("sam_waiter");
+                img_sam_wait.style.cssText="width:"+x+"px;height:"+y+"px;left:"+s_left_pos+"px;top:"+s_top_pos+"px;position:absolute;z-index:2";
+                /*Partie de placement de la ligne pour le "L" du logo*/
+                var ligne1 = document.getElementById("ligne1");
+                var ligne1_left_pos = Math.round(x/10);
+                var ligne1_top_pos = (7*Math.round(y/10));
+                ligne1.style.cssText="top:"+ligne1_top_pos+"px;left:"+ligne1_left_pos+"px;width:"+(Math.round(x/50))+"px;height:"+(Math.round(x/50))+"px;";
+                var ligne2 = document.getElementById("ligne2");
+                var ligne2_left_pos = Math.round(x/10);
+                var ligne2_top_pos = (9*Math.round(y/10));
+                ligne2.style.cssText="top:"+ligne2_top_pos+"px;left:"+ligne2_left_pos+"px;width:"+(Math.round(x/50))+"px;height:"+(Math.round(x/50))+"px;";
+                /*Partie de placement des autres lettres du logo*/
+                var lettre1 = document.getElementById("lettre1");
+                var lettre2 = document.getElementById("lettre2");
+                var lettre3 = document.getElementById("lettre3");
+                var lettre1_text = document.getElementById("lettre1_text");
+                var lettre2_text = document.getElementById("lettre2_text");
+                var lettre3_text = document.getElementById("lettre3_text");
+                var lettre_top_pos = (7.5*Math.round(y/10));
+                lettre1.style.cssText="top:"+lettre_top_pos+"px;left:"+(1.5*(Math.round(x/10)))+"px;width:"+(Math.round(x/4))+"px;height:"+(Math.round(x/4))+"px;";
+                lettre2.style.cssText="top:"+lettre_top_pos+"px;left:"+(4*(Math.round(x/10)))+"px;width:"+(Math.round(x/4))+"px;height:"+(Math.round(x/4))+"px;";
+                lettre3.style.cssText="top:"+lettre_top_pos+"px;left:"+(6.5*(Math.round(x/10)))+"px;width:"+(Math.round(x/4))+"px;height:"+(Math.round(x/4))+"px;";
+                var taille_font = Math.round(x*0.20);
+                lettre1_text.style.cssText="font-size:"+ taille_font +"px;height:"+(Math.round(x/4)) +"px;width:"+(Math.round(x/4))+"px;line-height:"+(Math.round(x/4))+"px;";
+                lettre2_text.style.cssText="font-size:"+ taille_font +"px;height:"+(Math.round(x/4)) +"px;width:"+(Math.round(x/4))+"px;line-height:"+(Math.round(x/4))+"px;";
+                lettre3_text.style.cssText="font-size:"+ taille_font +"px;height:"+(Math.round(x/4)) +"px;width:"+(Math.round(x/4))+"px;line-height:"+(Math.round(x/4))+"px;";
+                });
+                $(window).load(function(){
+                 setTimeout(function () {
+                        $("#fond_wait").hide();
+                        $("#wait").hide();    
+                        $("#sam_wait").hide();
+                        $("#ligne1").hide();
+                        $("#ligne2").hide();
+                        $("#lettre1").hide();
+                        $("#lettre2").hide();
+                        $("#lettre3").hide();
+                        $("#conteneur").fadeIn(1000);
+                    }, 2500);    
+                });
+        </script>
+        <title>Accueil</title>
+        <style>
+            @font-face {
+                font-family: blackcoffee;
+                src: url("font/blackcoffee.ttf");
+                }
+        </style>
+    </head>
+    <body>
+        <div id="conteneur">
+                        <img id="contenu" src="ressources/image_fond_tournant.png">
+                        <img id="sam" src="ressources/Sam.png"/>
+                         <div id="samDuSoir">
+                            <p id="samDuSoir_text">Sam Du Soir</p>
+                        </div>
+                        <div id="debut">
+                            <p id="debut_text">DEBUT DE SOIREE</p>
+                        </div>
+                            <div id="propos">
+                                <p id="propos_text">?</p>
+                            </div>  
+        </div>
+            <script type="text/javascript" src="js/accueil.js"></script>
+    </body>
+</html>
