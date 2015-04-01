@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+         <meta charset="utf-8" />
+         <meta name="viewport" content="user-scalable=no" />
+        <link rel="stylesheet" type="text/css" href="css/style_choix.css" />
+        <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+        <script src="js/jquery-1.10.2.min.js"></script>
+        <script src="js/jquery-ui.min.js"></script>
+        <script type="text/javascript">
+
+                   
+              
+                                        /**
+                * On traite d'abord le chargement du DOM
+                **/
+                $(document).ready(function(){
+                $("#conteneur").hide(); //on cache le contenu
+                $("body").append('<div id="wait"><img id="waiter" src="ressources/transition.jpg" alt="chargement..."/></div>');
+                $("body").append('<div id="wait_barre"><img id="waiter_barre" src="ressources/chargement_transition.png" alt="chargement..."/></div>');
+                var img_wait=document.getElementById("waiter");
+                img_wait.style.cssText="width:"+x+"px;height:"+y+"px;top:-10px;left:-10px;";
+                var img_waiter_barre=document.getElementById("waiter_barre");
+                img_waiter_barre.style.cssText="width:"+(Math.round(x/4))+"px;height:"+(Math.round(y/3))+"px;top:"+(7.3*(Math.round(y/10)))+"px;left:"+(3.5*(Math.round(x/10)))+"px;";
+            });
+                $(window).load(function(){
+                 setTimeout(function () {
+                     cadre.style.cssText="width:"+Math.round(5*(x/6))+"px;height:"+Math.round(9.3*(y/10)-(x/6))+"px;left:"+(Math.round(x/12)-10)+"px;top:"+(Math.round(x/12)-Math.round(x/40))+"px;visibility:visible;";
+                     back.style.cssText="width:"+Math.round(x/10)+"px;height:"+Math.round(x/10)+"px;left:"+ back_left_pos +"px;top:"+ back_top_pos +"px;visibility:visible;";
+                     continuer.style.cssText="width:"+taille_x+"px;height:"+taille_y+"px;left:"+continuer_left_pos+"px;top:"+continuer_top_pos+"px;visibility:visible;";
+                     fond.style.cssText="width:"+diago+"px;left:-"+f_left_pos+"px;top:-"+f_top_pos+"px;visibility:visible;";
+                        $("#wait").hide();     
+                        $("#wait_barre").hide();           
+                        $("#conteneur").fadeIn(1000);
+                    }, 1000);    
+                });
+
+
+            </script>
+        <style>
+            @font-face {
+                font-family: blackcoffee;
+                src: url("font/blackcoffee.ttf");
+                }
+        </style>
+        <title>Choix</title>
+    </head>
+    <body>
+        <div id="conteneur">
+
+           <img id="contenu" src="ressources/image_fond_tournant.png">
+            <div id="cadre"> 
+                
+                    <div id="slider"></div>
+                    <img id="nbr_participants" src="ressources/nombredeparticipants.png"></img>             
+                       <table id="array">
+                            <tr>
+                                <td>
+                                    <img id="dizaine" src="ressources/score_0.png"></img>
+                                </td>
+                                <td>
+                                    <img id="unite" src="ressources/score_1.png"></img>
+                                </td>
+                            </tr>
+                       </table>   
+                    <div id="slider2"></div>
+                    <img id="nbr_sam" src="ressources/nombredesam.png">
+                        <table id="array_car" cellpadding="0">
+                            <tr>
+                                <td>
+                                    <img class="img_car" id="car_0" src="ressources/car.png"></img>
+                                </td>
+                                <td>
+                                    <img class="img_car" id="car_1" src="ressources/car.png"></img>
+                                </td>
+                                <td>
+                                    <img class="img_car" id="car_2" src="ressources/car.png"></img>
+                                </td>
+                                <td>
+                                    <img class="img_car" id="car_3" src="ressources/car.png"></img>
+                                </td>
+                            </tr>
+                             <tr>
+                                <td>
+                                    <img class="img_car" id="car_4" src="ressources/car.png"></img>
+                                </td>
+                                <td>
+                                    <img class="img_car" id="car_5" src="ressources/car.png"></img>
+                                </td>
+                                <td>
+                                    <img class="img_car" id="car_6" src="ressources/car.png"></img>
+                                </td>
+                                <td>
+                                    <img class="img_car" id="car_7" src="ressources/car.png"></img>
+                                </td>
+                            </tr>
+                       </table>       
+            </div>
+                <div id="back">
+                    <img id="back_arrow" src="ressources/back_arrow.png">
+                </div>
+                <div id="continuer">
+                            <p id="continuer_text">CONTINUER</p>
+                </div>
+            </div>
+
+    <script src="js/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript">
+             $("#slider .ui-slider-handle").draggable();
+             $("#slider2 .ui-slider-handle").draggable();
+    </script>
+    <script type="text/javascript" src="js/choix.js"></script>    
+    </body>
+</html>
